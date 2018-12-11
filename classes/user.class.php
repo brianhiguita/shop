@@ -18,7 +18,31 @@ class User {
 
   }
 
+// not inserting into database
 
+
+  public function create_user() {
+
+    if (isset($_POST['submit'])) {
+      if (!empty($_POST['email']) && !empty($_POST['password'])) {
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $insert_query = "INSERT INTO `user` (email, password) VALUES ('$email', '$password')";
+        $result = $this->user_query($insert_query);
+        echo "created";
+
+      }
+      else {
+        echo "it failed";
+      }
+
+    }
+
+
+
+  }
 
 
 
