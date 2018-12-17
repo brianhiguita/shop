@@ -6,13 +6,18 @@ class User {
   public $email;
   public $password;
 
-  public function get_user() {
-    $query = "SELECT * FROM `user` WHERE `id` = 1";
+  public function get_user($session_id) {
+    $query = "SELECT * FROM `user` WHERE id = 23";
     $result = $this->user_query($query);
 
     while ($row = mysqli_fetch_assoc($result)) {
-      $this->id = $row['id'];
-      $this->email = $row['email'];
+
+// SET USER SESSION
+      // $_SESSION['user_email'] = $row['email'];
+      // $_SESSION['user_id'] = $row['id'];
+
+      $this->id = $row['id'] . "<br>";
+      $this->email = $row['email'] . "<br>";
       $this->password = $row['password'];
     }
 
@@ -22,16 +27,18 @@ class User {
 
 
   public function create_user() {
-
+    global $database;
     if (isset($_POST['submit'])) {
       if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = mysqli_real_escape_string($database->connection, $_POST['email']);
+        $password = mysqli_real_escape_string($database->connection, $_POST['password']);
 
-        $insert_query = "INSERT INTO `user` (email, password) VALUES ('$email', '$password')";
-        $result = $this->user_query($insert_query);
-        echo "created";
+        echo $email . "<br>";
+        echo $password;
+
+        $query = "INSERT INTO `user` (`email`, `password`) VALUES ('$email', '$password')";
+        $add_query = $this->user_query($query);
 
       }
       else {
@@ -40,10 +47,7 @@ class User {
 
     }
 
-
-
   }
-
 
 
 

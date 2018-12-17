@@ -2,18 +2,11 @@
 
     <h1>Hello, world!</h1>
 
-    <?php
+    <a href="register_user.php">Register</a>
+    <a href="view_account.php">Account</a>
+    <a href="login.php">login</a>
 
-    $register_user = new User();
-    $register_user->create_user();
 
-    ?>
-
-    <form class="" action="" method="post">
-      <input type="text" name="email" value="" placeholder="email">
-      <input type="password" name="password" value="" placeholder="password">
-      <input type="submit" name="submit" value="register">
-    </form>
 
 
 <?php include "includes/footer.php"; ?>
