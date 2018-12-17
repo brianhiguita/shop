@@ -9,7 +9,9 @@
     echo $view_user->id;
     echo $view_user->email;
     echo $view_user->password;
-    
+
+
+
     ?>
 
 

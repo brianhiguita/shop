@@ -7,15 +7,12 @@ class User {
   public $password;
   public $user_exists;
 
-  public function get_user($session_id) {
-    $query = "SELECT * FROM `user` WHERE id = 23";
+  public function get_user() {
+    $email = $_SESSION['email'];
+    $query = "SELECT * FROM `user` WHERE email = '$email'";
     $result = $this->user_query($query);
 
     while ($row = mysqli_fetch_assoc($result)) {
-
-// SET USER SESSION
-      // $_SESSION['user_email'] = $row['email'];
-      // $_SESSION['user_id'] = $row['id'];
 
       $this->id = $row['id'] . "<br>";
       $this->email = $row['email'] . "<br>";
@@ -23,8 +20,6 @@ class User {
     }
 
   }
-
-// not inserting into database
 
 
   public function create_user() {
@@ -35,15 +30,18 @@ class User {
         $email = mysqli_real_escape_string($database->connection, $_POST['email']);
         $password = mysqli_real_escape_string($database->connection, $_POST['password']);
 
-        echo $email . "<br>";
-        echo $password;
+        $this->user_exists($email, $password);
 
-        $query = "INSERT INTO `user` (`email`, `password`) VALUES ('$email', '$password')";
-        $add_query = $this->user_query($query);
+        if ($this->user_exists == false) {
+          $query = "INSERT INTO `user` (`email`, `password`) VALUES ('$email', '$password')";
+          $add_query = $this->user_query($query);
+        } else {
+          echo "user already exists";
+        }
 
       }
       else {
-        echo "it failed";
+        echo "Not all fields were entered correctly";
       }
 
     }
@@ -64,6 +62,9 @@ class User {
 
           if ($this->user_exists == true) {
             echo "the user does exist";
+
+            $_SESSION['email'] = $email;
+
           } else {
             echo "the user doesnt exists";
           }
@@ -73,8 +74,6 @@ class User {
           echo "somethings empty";
         }
       }
-
-
   }
 
 
