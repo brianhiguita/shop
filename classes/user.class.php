@@ -13,7 +13,6 @@ class User {
     $result = $this->user_query($query);
 
     while ($row = mysqli_fetch_assoc($result)) {
-
       $this->id = $row['id'] . "<br>";
       $this->email = $row['email'] . "<br>";
       $this->password = $row['password'];

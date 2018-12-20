@@ -1,7 +1,6 @@
 <?php include "includes/head.php"; ?>
 
 
-    <h1>Hello, world!</h1>
 
     <?php $view_user = New User();
     $view_user->get_user();
