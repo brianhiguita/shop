@@ -77,7 +77,7 @@ class User {
 
 
 
-  public function user_exists($email, $password) {
+  protected function user_exists($email, $password) {
     $query = "SELECT * FROM `user` WHERE email = '$email' and password = '$password'";
     $result = $this->user_query($query);
       if (mysqli_num_rows($result)>=1) {
@@ -88,10 +88,17 @@ class User {
   }
 
 
-  public function user_query($sql) {
+  protected function user_query($sql) {
     global $database;
     $query = $database->query($sql);
     return $query;
+  }
+
+  public function is_signed_in() {
+    if (!isset($_SESSION['email'])) {
+      echo "user is not signed in, needs to be redirected";
+      header('Location: index.php');
+    }
   }
 
 

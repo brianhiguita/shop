@@ -2,17 +2,34 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
+
+
+<!-- IF USER IS NOT SIGNED IN -->
+
+    <?php if (!isset($_SESSION['email'])) { ?>
+
       <li class="nav-item">
         <a class="nav-link" href="login.php">login</a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="register_user.php">Register</a>
+      </li>
+
+    <?php } ?>
+
+<!-- IF USER IS SIGNED IN -->
+
+    <?php if (isset($_SESSION['email'])) { ?>
 
       <li class="nav-item">
         <a class="nav-link" href="view_account.php">Account</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="register_user.php">Register</a>
+        <a class="nav-link" href="logout.php">Logout</a>
       </li>
+    <?php } ?>
 
     </ul>
 
