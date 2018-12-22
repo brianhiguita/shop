@@ -1,7 +1,5 @@
 <?php include "includes/head.php"; ?>
 
-    <h1>Hello, world!</h1>
-
     <?php
 
     $register_user = new User();

@@ -5,10 +5,7 @@
   $login_user = new User();
   $login_user->login_user();
 
-
-
    ?>
-
 
   <form class="" action="" method="post">
     <input type="email" name="email" value="" placeholder="email">

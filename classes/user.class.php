@@ -60,9 +60,8 @@ class User {
           $this->user_exists($email, $password);
 
           if ($this->user_exists == true) {
-            echo "the user does exist";
-
             $_SESSION['email'] = $email;
+            header('Location: index.php');
 
           } else {
             echo "the user doesnt exists";
