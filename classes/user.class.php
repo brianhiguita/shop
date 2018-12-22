@@ -28,6 +28,7 @@ class User {
 
         $email = mysqli_real_escape_string($database->connection, $_POST['email']);
         $password = mysqli_real_escape_string($database->connection, $_POST['password']);
+        $password = md5($password);
 
         $this->user_exists($email, $password);
 
@@ -56,7 +57,7 @@ class User {
           global $database;
           $email = mysqli_real_escape_string($database->connection, $_POST['email']);
           $password = mysqli_real_escape_string($database->connection, $_POST['password']);
-
+          $password = md5($password);
           $this->user_exists($email, $password);
 
           if ($this->user_exists == true) {
