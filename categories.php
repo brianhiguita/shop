@@ -2,8 +2,11 @@
 
 <?php
 
+
+  $category = $_GET['category'];
+
   $product_cat = new Product();
-  $product_cat->get_product("tv");
+  $product_cat->get_product($category);
 
  ?>
 
@@ -17,8 +20,5 @@
  <?php
      }
    ?>
-
-
-
 
 <?php include "includes/footer.php"; ?>
