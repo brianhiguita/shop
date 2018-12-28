@@ -8,6 +8,10 @@
         <a class="nav-link" href="index.php">Home</a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="admin/index.php">Admin</a>
+      </li>
+
     <?php if (!isset($_SESSION['email'])) { ?>
 
       <li class="nav-item">

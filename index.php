@@ -16,5 +16,8 @@
     }
   ?>
 
+<a href="products.php?category=tv">tv</a>
+<a href="products.php?category=tv">laptop</a>
+
 
 <?php include "includes/footer.php"; ?>
